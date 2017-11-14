@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="Ma0-gA-CUj">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="vertical" spineLocation="none" id="1aL-hq-Lhe" customClass="ViewController" customModule="PageViewControllerSandbox" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1aL-hq-Lhe" customClass="ViewController" customModule="PageViewControllerSandbox" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XX-IH-XrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="271" y="108"/>
@@ -86,9 +87,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y21-Sh-jVC">
+                                <rect key="frame" x="164.5" y="359.5" width="46" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="ZsT-VE-0US"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didTapToggleButton:" destination="Us0-r9-JAk" eventType="touchUpInside" id="7QC-QH-v5t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.88236516180000002" green="1" blue="0.2061730088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Y21-Sh-jVC" firstAttribute="centerX" secondItem="pRV-vz-Lfz" secondAttribute="centerX" id="2fh-ib-cZg"/>
+                            <constraint firstItem="Y21-Sh-jVC" firstAttribute="centerY" secondItem="pRV-vz-Lfz" secondAttribute="centerY" multiplier="1.2" id="4y6-JF-I8O"/>
                             <constraint firstItem="1ZY-6i-boE" firstAttribute="centerX" secondItem="pRV-vz-Lfz" secondAttribute="centerX" id="URj-cE-foX"/>
                             <constraint firstItem="1ZY-6i-boE" firstAttribute="centerY" secondItem="pRV-vz-Lfz" secondAttribute="centerY" id="i7x-GD-NaI"/>
                         </constraints>
@@ -97,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec1-id-OKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2178" y="108"/>
+            <point key="canvasLocation" x="2176.8000000000002" y="107.49625187406298"/>
         </scene>
     </scenes>
 </document>

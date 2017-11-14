@@ -9,10 +9,12 @@
 import UIKit
 
 class ViewController: UIPageViewController {
+    var thirdVC: ThirdViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        thirdVC = storyboard!.instantiateViewController(withIdentifier: "ThirdViewController") as! ThirdViewController
         let firstVC = storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
         self.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         self.dataSource = self
@@ -23,7 +25,7 @@ extension ViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         switch viewController {
         case is FirstViewController:
-            return storyboard!.instantiateViewController(withIdentifier: "ThirdViewController") as! ThirdViewController
+            return thirdVC
         case is SecondViewController:
             return storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
         case is ThirdViewController:
@@ -38,7 +40,7 @@ extension ViewController: UIPageViewControllerDataSource {
         case is FirstViewController:
             return storyboard!.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
         case is SecondViewController:
-            return storyboard!.instantiateViewController(withIdentifier: "ThirdViewController") as! ThirdViewController
+            return thirdVC
         case is ThirdViewController:
             return storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
         default:
