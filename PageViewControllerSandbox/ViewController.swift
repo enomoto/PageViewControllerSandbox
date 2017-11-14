@@ -8,18 +8,41 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let firstVC = storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
+        self.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        self.dataSource = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
+extension ViewController: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        switch viewController {
+        case is FirstViewController:
+            return storyboard!.instantiateViewController(withIdentifier: "ThirdViewController") as! ThirdViewController
+        case is SecondViewController:
+            return storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
+        case is ThirdViewController:
+            return storyboard!.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+        default:
+            return nil
+        }
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        switch viewController {
+        case is FirstViewController:
+            return storyboard!.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+        case is SecondViewController:
+            return storyboard!.instantiateViewController(withIdentifier: "ThirdViewController") as! ThirdViewController
+        case is ThirdViewController:
+            return storyboard!.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
+        default:
+            return nil
+        }
+    }
+}
